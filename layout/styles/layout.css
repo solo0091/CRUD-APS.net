@@ -37,9 +37,11 @@ img{display:block; margin:0; padding:0; border:0;}
 
 /* ----------------------------------------------Generalise------------------------------------- */
 
-h1, h2, h3, h4, h5, h6{margin:0 0 20px 0; padding:0 0 8px 0; font-size:20px; font-weight:normal; font-family:Georgia, "Times New Roman", Times, serif; border-bottom:1px dotted #DDDDDD;}
+h1, h2, h3, h4, h5, h6{margin:0 0 20px 0; padding:0 0 8px 0; font-size:20px; font-weight:normal; font-family:Neuropol, Georgia, "Times New Roman", Times, serif; border-bottom:1px dotted #DDDDDD;}
 
-#header, #topbar, #featured_slide, #homecontent, #breadcrumb, #container, #footer, #copyright{display:block; width:960px; margin:0 auto;}
+#header, #topbar, #featured_slide, #homecontent, #breadcrumb, #container, #footer, #copyright{display:block; width:950px; 
+margin:0 auto;
+}
 
 .wrapper{display:block; width:920px; padding:15px 10px; color:#666666; background-color:#FFFFFF; border-left:10px solid #DFDFDF; border-right:10px solid #DFDFDF;}
 
@@ -138,3 +140,25 @@ h1, h2, h3, h4, h5, h6{margin:0 0 20px 0; padding:0 0 8px 0; font-size:20px; fon
 #copyright .wrapper{padding:10px 20px; border:none;}
 #copyright p{margin:0; padding:0;}
 #copyright .wrapper, #copyright a{color:#FFFFFF; background-color:#3D3D3D;}
+
+h1, h2, h3 {
+	margin: 0;
+	padding: 0;
+	text-transform: uppercase;
+	font-family: 'Archivo Narrow', sans-serif;
+	font-weight: normal;
+	font-weight: 200;
+	color: #222222;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 2.8em;
+}
+
+h3 {
+	font-size: 1.6em;
+}

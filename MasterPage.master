@@ -1,0 +1,11 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/PaginaAdministrador.master" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+
+    <p>
+    <img alt="" src="images/inicio/banner_soporte.JPG" style="width: 847px; height: 274px" /></p>
+
+
+</asp:Content>
+

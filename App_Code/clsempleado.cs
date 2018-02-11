@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 public class clsempleado : clsconexion
 {
     //declarar las variables glovales
-    string tabla = "tbl_empleado";
+    string tabla = "tbl_empleado";    // nombre de la tabla de la base de datos
     protected string nombre, usuario, contraseña;
     protected int idempleado, idacceso;
 
@@ -53,18 +53,20 @@ public class clsempleado : clsconexion
     //agrega un nuevo registro a la BD
     public void agregar()
     {
-        conectar(tabla);
+        conectar(tabla); //nos conectamos a la base de datos(nombre de la tabla)
         DataRow fila;
-        fila = Data.Tables[tabla].NewRow();
-        fila["idempleado"] = Idempleado;
+        fila = Data.Tables[tabla].NewRow();//creamos un fila nueva en la tabla
+        fila["idempleado"] = Idempleado;   // [nom_colu_base]=valor qe nos mandan el metodo de cada valor
         fila["idacceso"] = Idacceso;
         fila["nombre"] = Nombre;
         fila["usuario"] = Usuario;
         fila["contraseña"] = Contraseña;
 
-        Data.Tables[tabla].Rows.Add(fila);
-        AdaptadorDatos.Update(Data, tabla);
+        Data.Tables[tabla].Rows.Add(fila); //añadimos la nueva fila a la tabla
+        AdaptadorDatos.Update(Data, tabla);//actualizamos la tabla
     }
+
+
     //Actualiza el registro especificado
     public void modificar()
     {
@@ -77,7 +79,7 @@ public class clsempleado : clsconexion
 
             if (int.Parse(fila["idempleado"].ToString().Trim()) == Idempleado)  //.trim = elimina los campos vacios
             {    //valor de la bd de un  empleado == valor del el formulario
-                fila["idempleado"] = Idempleado;    //var de bd = var del formulario
+                fila["idempleado"] = Idempleado;    //var de bd = var q se mando del form a esta clase.metodo
                 fila["idacceso"] = Idacceso;
                 fila["nombre"] = Nombre;
                 fila["usuario"] = Usuario;
@@ -93,14 +95,14 @@ public class clsempleado : clsconexion
         conectar(tabla);//sirve para conectar a la base de datos
         DataRow fila;
 
-        int x = Data.Tables[tabla].Rows.Count - 1;
+        int x = Data.Tables[tabla].Rows.Count - 1;//obtenemos la cantidad de registro de la tabla
         for (int i = 0; i <= x; i++)
         {
-            fila = Data.Tables[tabla].Rows[i];
+            fila = Data.Tables[tabla].Rows[i];//sacamos un fila conpleta de la tabla
 
             if (int.Parse(fila["idempleado"].ToString().Trim()) == valor)
-            {    // si exsite el valor  de empleado sacamos los valores dela bd y loos mostramos
-                Idempleado = int.Parse(fila["idempleado"].ToString());//valores qe se ven= val qe se tienen
+            {    // si exsite el valor  de empleado sacamos los valores dela bd y los mostramos
+                Idempleado = int.Parse(fila["idempleado"].ToString());//metodo de la variable = valor de la bd
                 Idacceso = int.Parse(fila["idacceso"].ToString());
                 Nombre = fila["nombre"].ToString();
                 Usuario = fila["usuario"].ToString();
@@ -126,7 +128,7 @@ public class clsempleado : clsconexion
 
             if (int.Parse(fila["idempleado"].ToString().Trim()) == valor)
             {
-                fila = Data.Tables[tabla].Rows[i];//registro actual
+                fila = Data.Tables[tabla].Rows[i];//registro actual que se emcuentra en la variable fila
                 fila.Delete();                    //eliminamo la fila
                 DataTable tablaborrados;
 
@@ -140,20 +142,22 @@ public class clsempleado : clsconexion
         return false;
     }
 
-    public bool login(string user, string pass)
+    public bool login(string user, string pass)//usuario,passwoor
     {
         conectar(tabla);
         DataRow fila;
 
-        int x = Data.Tables[tabla].Rows.Count - 1;
-        for (int i = 0; i <= x; i++)
+        int x = Data.Tables[tabla].Rows.Count - 1;//contamos
+        for (int i = 0; i <= x; i++)//recoremos el registro
         {
-            fila = Data.Tables[tabla].Rows[i];
-
+            fila = Data.Tables[tabla].Rows[i];//obtenemos una fila
+              //fila["nom_de_tabla"].convertimos              
+            //ToLower = convierte la cadena SerGio a sergio
             if (fila["usuario"].ToString().Trim().ToLower() == user.Trim().ToLower() &&
                 fila["contraseña"].ToString().Trim() == pass.Trim())
-            {
-
+            {          
+                //<=======  se asigna a ese lado
+                //pasomos los parametros a el formulario
                 Idempleado = int.Parse(fila["idempleado"].ToString());
                 Idacceso = int.Parse(fila["idacceso"].ToString());
                 Nombre = fila["nombre"].ToString();
